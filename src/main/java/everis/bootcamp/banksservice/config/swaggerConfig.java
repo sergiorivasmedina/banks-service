@@ -15,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class swaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-            .title("Reactive Documentation Customer - Project 1")
+            .title("Reactive Documentation Banks service - Project 1")
             .description("Reactive API Documentation - Sergio Rivas Medina")
             .version("1.0.0")
             .build();
