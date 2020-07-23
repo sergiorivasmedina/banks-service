@@ -26,6 +26,6 @@ public class BankService {
     }
 
     public Mono<Void> delete(Bank bank) {
-        bankRepository.delete(bank);
+        return bankRepository.delete(bank);
     }
 }
