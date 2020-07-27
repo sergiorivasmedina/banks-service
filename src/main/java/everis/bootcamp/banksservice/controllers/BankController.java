@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import everis.bootcamp.banksservice.dto.InitialEndDates;
+import everis.bootcamp.banksservice.dto.ProductsReport;
 import everis.bootcamp.banksservice.models.Bank;
 import everis.bootcamp.banksservice.services.BankService;
 import reactor.core.publisher.Flux;
@@ -21,6 +23,7 @@ import reactor.core.publisher.Mono;
 @RestController
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT})
 public class BankController {
+
     @Autowired
     private BankService bankService;
 
@@ -57,5 +60,10 @@ public class BankController {
                     .then(Mono.just(new ResponseEntity<Void>(HttpStatus.OK))) 
             )
             .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @PostMapping(value = "/bank/report/products/{bankId}")
+    public Mono<ProductsReport> getProductsReportByBankId(@PathVariable(name = "bankId") String bankId, @RequestBody InitialEndDates dates) {
+        return bankService.getProductsReportByBankId(dates, bankId);
     }
 }
