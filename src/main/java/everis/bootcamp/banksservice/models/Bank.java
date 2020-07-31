@@ -15,4 +15,6 @@ public class Bank {
     @Id
     private String idBank;
     private String name;
+    private double depositFromOtherBankCommission;
+    private double withdrawFromOtherBankCommission;
 }
